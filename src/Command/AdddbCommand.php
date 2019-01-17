@@ -1,5 +1,5 @@
 <?php
-namespace AlissonNascimento\Utils\Command;
+namespace Shelf\Command;
 
 use Cake\Console\Arguments;
 use Cake\Console\Command;

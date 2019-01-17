@@ -4,8 +4,8 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
 Router::plugin(
-    'AlissonNascimento\Utils',
-    ['path' => '/alisson-nascimento\utils'],
+    'Shelf',
+    ['path' => '/shelf'],
     function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     }

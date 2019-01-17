@@ -1,6 +1,6 @@
 {
-    "name": "your-name-here/AlissonNascimento\Utils",
-    "description": "AlissonNascimento\Utils plugin for CakePHP",
+    "name": "alisson-nascimento/cakephp-plugin-shelf",
+    "description": "AlissonNascimento's Plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
@@ -11,12 +11,12 @@
     },
     "autoload": {
         "psr-4": {
-            "AlissonNascimento\\Utils\\": "src/"
+            "Shelf\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AlissonNascimento\\Utils\\Test\\": "tests/",
+            "Shelf\\Test\\": "tests/",
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
         }
     }

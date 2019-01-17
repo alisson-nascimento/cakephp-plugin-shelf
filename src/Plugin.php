@@ -1,6 +1,6 @@
 <?php
 
-namespace AlissonNascimento\Utils;
+namespace Shelf;
 
 use Cake\Core\BasePlugin;
 

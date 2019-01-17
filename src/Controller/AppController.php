@@ -1,6 +1,6 @@
 <?php
 
-namespace AlissonNascimento\Utils\Controller;
+namespace Shelf\Controller;
 
 use App\Controller\AppController as BaseController;
 
