@@ -69,7 +69,7 @@ class AdddbCommand extends Command
         $this->modelo['database']  = $args->getArgument('database');
         $this->modelo['encoding']  = $args->getArgument('encoding');
 
-        $file = new File(ROOT . '/config/database.1.php', true, 0644);
+        $file = new File(ROOT . DS . 'config'. DS .'database.php', true, 0755);
         // $file->write(print_r($this->modelo, true));
         
         $data_array = [$name => $this->modelo];
