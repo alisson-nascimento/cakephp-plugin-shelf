@@ -42,7 +42,7 @@ class ShelfLogRegistroTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->hasMany('ShelfLogDetalhe', [
-            'foreignKey' => 'shelf_registro_id',
+            'foreignKey' => 'shelf_log_registro_id',
             'className' => 'Shelf.ShelfLogDetalhe'
         ]);
     }

@@ -10,7 +10,7 @@ use Shelf\Controller\AppController;
  *
  * @method \Shelf\Model\Entity\ShelfLogRegistro[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class LogsController extends AppController
+class LogController extends AppController
 {
     /**
      * Index method
@@ -19,8 +19,8 @@ class LogsController extends AppController
      */
     public function index()
     {
-        $this->loadModel('ShelfLogRegistro');
-        $logs = $this->paginate($this->ShelfLog);
+        $this->loadModel('Shelf.ShelfLogRegistro');
+        $logs = $this->paginate($this->ShelfLogRegistro);
 
         $this->set(compact('logs'));
     }
@@ -34,7 +34,7 @@ class LogsController extends AppController
      */
     public function view($id = null)
     {
-        $this->loadModel('ShelfLogRegistro');
+        $this->loadModel('Shelf.ShelfLogRegistro');
         $log = $this->ShelfLogRegistro->get($id, [
             'contain' => ['ShelfLogDetalhe']
         ]);

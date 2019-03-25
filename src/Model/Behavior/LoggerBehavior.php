@@ -4,7 +4,7 @@ namespace Shelf\Model\Behavior;
 
 use Cake\ORM\Behavior;
 use Cake\Event\Event;
-use Cake\ORM\EnShelftity;
+use Cake\ORM\Entity;
 
 class LoggerBehavior extends Behavior {
 
@@ -38,10 +38,12 @@ class LoggerBehavior extends Behavior {
         
         if(!in_array($class, ['Shelf\\Model\\Entity\\ShelfLogRegistro', 'Shelf\\Entity\\Table\\ShelfLogDetalhe'])){
             
-            $registroTable = \Cake\ORM\TableRegistry::get('ShelfLOgRegistros');
-            $logDetalheTable = \Cake\ORM\TableRegistry::get('ShelfLogDetalhe');
-            $log = $logDetalheTable->newEntity();            
+            $registroTable = \Cake\ORM\TableRegistry::get('Shelf.ShelfLogRegistro');
+            $logDetalheTable = \Cake\ORM\TableRegistry::get('Shelf.ShelfLogDetalhe');
+            $log = $logDetalheTable->newEntity();
             
+            // pr($registroTable ); exit;
+
             $data = \Cake\Routing\Router::getRequest()->getData();
             unset($data['_save']);
             if(empty($data)){
@@ -57,7 +59,6 @@ class LoggerBehavior extends Behavior {
 
             $registro = $query->first();
             
-
             if($entity->isNew() || is_null($registro)){
 
                 $registro = $registroTable->newEntity();
@@ -67,7 +68,7 @@ class LoggerBehavior extends Behavior {
                 $registro->created = date('Y-m-d H:i:s');
                 
             }
-            
+            // pr($registro);exit;
             if($entity->isNew()){
                 $log->tipo_acao = 'Insert';
             }else{
@@ -75,14 +76,13 @@ class LoggerBehavior extends Behavior {
                 $log->tipo_acao = 'Update';
             }
 
-
             $log->created = date('Y-m-d H:i:s');
 
             if ($registroTable->save($registro)) {
                 //The $article entity contains the id now
                 $registro_id = $registro->id;
-                $log->auditoria_registro_id = $registro_id;
-    //            pr($log);
+                $log->shelf_log_registro_id  = $registro_id;
+                // pr($log);exit;
                 $logDetalheTable->save($log);
             }
         }                        
@@ -93,8 +93,8 @@ class LoggerBehavior extends Behavior {
         $class = get_class($entity);
         
         if(!in_array($class, ['Shelf\\Model\\Entity\\ShelfRegistro', 'Shelf\\Model\\Entity\\ShelfLog'])){
-            $registroTable = \Cake\ORM\TableRegistry::get('ShelfRegistros');
-            $logDetalheTable = \Cake\ORM\TableRegistry::get('ShelfLogs');
+            $registroTable = \Cake\ORM\TableRegistry::get('Shelf.ShelfLogRegistro');
+            $logDetalheTable = \Cake\ORM\TableRegistry::get('Shelf.ShelfLogDetalhe');
             $log = $logDetalheTable->newEntity();
 
             $query = $registroTable->find('all')
@@ -106,7 +106,7 @@ class LoggerBehavior extends Behavior {
             $log->created = date('Y-m-d H:i:s');
             
             $registro_id = $registro->id;
-            $log->auditoria_registro_id = $registro_id;
+            $log->shelf_log_registro_id = $registro_id;
 
             if ($logDetalheTable->save($log)) {                
                //TODO 

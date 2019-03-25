@@ -41,7 +41,7 @@ class ShelfLogDetalheTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('ShelfRegistro', [
+        $this->belongsTo('ShelfLogRegistro', [
             'foreignKey' => 'shelf_log_registro_id',
             'joinType' => 'INNER',
             'className' => 'Shelf.ShelfLogRegistro'
