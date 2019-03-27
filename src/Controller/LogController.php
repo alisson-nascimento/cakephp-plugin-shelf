@@ -20,7 +20,10 @@ class LogController extends AppController
     public function index()
     {
         $this->loadModel('Shelf.ShelfLogRegistro');
-        $logs = $this->paginate($this->ShelfLogRegistro);
+        $logs = $this->paginate($this->ShelfLogRegistro
+                                    ->find('search', ['search' => $this->request->getQueryParams()])
+                                    ->contain(['CreatedBy', 'UpdatedBy'])
+                                );
 
         $this->set(compact('logs'));
     }
@@ -36,7 +39,7 @@ class LogController extends AppController
     {
         $this->loadModel('Shelf.ShelfLogRegistro');
         $log = $this->ShelfLogRegistro->get($id, [
-            'contain' => ['ShelfLogDetalhe']
+            'contain' => ['ShelfLogDetalhe'=>['CreatedBy'], 'CreatedBy', 'UpdatedBy']
         ]);
 
         $this->set('log', $log);
