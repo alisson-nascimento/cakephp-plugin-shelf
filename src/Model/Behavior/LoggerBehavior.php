@@ -64,7 +64,6 @@ class LoggerBehavior extends Behavior {
                 $registro = $registroTable->newEntity();
 
                 $registro->modelo_table = $class;
-                $registro->modelo_pk = $entity->id;
                 $registro->created = date('Y-m-d H:i:s');
                 
             }

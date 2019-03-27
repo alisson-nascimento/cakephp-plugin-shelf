@@ -1,8 +1,10 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
-    Log Registros
-    <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], ['class'=>'btn btn-success btn-sm']) ?></div>
+  <h1>    
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i></li>
+        <li>Log Registros</li>
+    </ol>
   </h1>
 </section>
 
@@ -48,7 +50,7 @@
                 <td><?= $this->Number->format($log->created_by) ?></td>
                 <td><?= $this->Number->format($log->updated_by) ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('Ver'), ['action' => 'view', $log->id], ['class'=>'btn btn-info btn-xs']) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $log->id], ['class'=>'btn btn-info btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

@@ -1,12 +1,15 @@
 <section class="content-header">
     <h1>
-        <?php echo __('Log Registro') . ' #' . $log->id; ?>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i></li>
+            <li>echo __('Log Registro') . ' #' . $log->id;</li>
+        </ol>
+        <small>Detalhe</small>
+        <div class="pull-right">
+            <?=$this->Html->link('Listagem', '/shelf/log', ['class'=>'btn btn-default btn-sm btn-flat'])?>
+        </div>
     </h1>
-    <ol class="breadcrumb">
-        <li>
-            <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Listagem'), ['action' => 'index'], ['escape' => false]) ?>
-        </li>
-    </ol>
+    
 </section>
 
 <!-- Main content -->
