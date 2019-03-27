@@ -54,8 +54,6 @@ class LoggerBehavior extends Behavior
             $logDetalheTable = \Cake\ORM\TableRegistry::get('Shelf.ShelfLogDetalhe');
             $log = $logDetalheTable->newEntity();
 
-            // pr($registroTable ); exit;
-
             $data = \Cake\Routing\Router::getRequest()->getData();
             unset($data['_save']);
             if (empty($data)) {
@@ -63,8 +61,6 @@ class LoggerBehavior extends Behavior
             }
 
             $diff = $entity->extractOriginalChanged(array_keys($data));
-
-            //                $diff = $this->arrayRecursiveDiff($original, $data);
 
             $query = $registroTable->find('all')
                 ->where(['modelo_pk' => $entity->id, 'modelo_table' => $class]);
@@ -80,7 +76,6 @@ class LoggerBehavior extends Behavior
                 $registro->created = date('Y-m-d H:i:s');
                 $registro->created_by = $this->getSessionUser()['id'];
             }
-            // pr($registro);exit;
             if ($entity->isNew()) {
                 $log->tipo_acao = 'Insert';
             } else {
@@ -88,7 +83,7 @@ class LoggerBehavior extends Behavior
                 $log->tipo_acao = 'Update';
             }
 
-            $registro->created_by = $log->updated_by = $this->getSessionUser()['id'];
+            $registro->updated_by = $log->created_by = $this->getSessionUser()['id'];
             $log->created = date('Y-m-d H:i:s');
 
             if ($registroTable->save($registro)) {
