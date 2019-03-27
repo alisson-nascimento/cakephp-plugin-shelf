@@ -11,7 +11,9 @@
     </h1>
     
 </section>
-
+<?php 
+    $displayField = \Cake\Core\Configure::read('Log.userDisplayField');
+?>
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -29,7 +31,7 @@
                         </dd>
                         <dt><?= __('Created By') ?></dt>
                         <dd>
-                          <?= $usuario->has('created_by') ? $log->created_by->{$displayField} : '' ?>
+                          <?= $log->has('created_by') ? $log->created_by->{$displayField} : '' ?>
                         </dd>
                         <dt><?= __('Updated By') ?></dt>
                         <dd>
