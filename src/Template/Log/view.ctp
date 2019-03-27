@@ -2,7 +2,7 @@
     <h1>
         <ol class="breadcrumb">
             <li><i class="fa fa-dashboard"></i></li>
-            <li>echo __('Log Registro') . ' #' . $log->id;</li>
+            <li><?=__('Log Registro') . ' #' . $log->id;?></li>
         </ol>
         <small>Detalhe</small>
         <div class="pull-right">
@@ -17,19 +17,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
-                <div class="box-header with-border">
-                    <i class="fa fa-info"></i>
-                    <h3 class="box-title"><?php echo __('Dados'); ?></h3>
-                </div>
-                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?= __('Modelo Table') ?></dt>
                         <dd>
                             <?= h($log->modelo_table) ?>
                         </dd>
-
-
                         <dt><?= __('Modelo Pk') ?></dt>
                         <dd>
                             <?= $this->Number->format($log->modelo_pk) ?>
@@ -42,13 +35,10 @@
                         <dd>
                             <?= $this->Number->format($log->updated_by) ?>
                         </dd>
-
                         <dt><?= __('Deleted') ?></dt>
                         <dd>
                             <?= h($log->deleted) ?>
                         </dd>
-
-
                     </dl>
                 </div>
                 <!-- /.box-body -->
@@ -64,17 +54,11 @@
             <div class="box">
                 <div class="box-header">
                     <i class="fa fa-share-alt"></i>
-                    <h3 class="box-title"><?= __('Registros de {0} Relacionados', ['Detalhes']) ?></h3>
+                    <h3 class="box-title"><?= __('Atividades') ?></h3>
                 </div>
-
                 <!-- /.box-header -->
-
                 <div class="box-body table-responsive no-padding">
-
-
-
                     <?php if (!empty($log->shelf_log_detalhe)) : ?>
-
                     <table class="table table-bordered" class="table table-hover">
 
                         <tbody>
