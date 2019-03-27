@@ -40,6 +40,7 @@ class ShelfLogDetalheTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Search.Search');
 
         $this->belongsTo('ShelfLogRegistro', [
             'foreignKey' => 'shelf_log_registro_id',

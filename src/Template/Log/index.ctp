@@ -35,22 +35,25 @@
                 <th><?= $this->Paginator->sort('modelo_table') ?></th>
                 <th><?= $this->Paginator->sort('modelo_pk') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('created_by_id') ?></th>
-                <th><?= $this->Paginator->sort('updated_by_id') ?></th>
+                <th><?= $this->Paginator->sort('created_by') ?></th>
+                <th><?= $this->Paginator->sort('updated_by') ?></th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
+            <?php 
+                $displayField = \Cake\Core\Configure::read('Log.userDisplayField');
+            ?>
             <?php foreach ($logs as $log): ?>
               <tr>
                 <td><?= $this->Number->format($log->id) ?></td>
                 <td><?= h($log->modelo_table) ?></td>
                 <td><?= $this->Number->format($log->modelo_pk) ?></td>
                 <td><?= h($log->created) ?></td>
-                <td><?= $this->Number->format($log->created_by_id) ?></td>
-                <td><?= $this->Number->format($log->updated_by_id) ?></td>
+                <td><?= $log->has('created_by') ? $log->created_by->{$displayField} : '' ?></td>
+                <td><?= $log->has('updated_by') ? $log->updated_by->{$displayField} : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
-                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $log->id], ['class'=>'btn btn-info btn-xs']) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $log->id], ['class'=>'btn btn-default btn-flat btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

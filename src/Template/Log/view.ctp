@@ -29,11 +29,11 @@
                         </dd>
                         <dt><?= __('Created By') ?></dt>
                         <dd>
-                            <?= $this->Number->format($log->created_by_id) ?>
+                          <?= $usuario->has('created_by') ? $log->created_by->{$displayField} : '' ?>
                         </dd>
                         <dt><?= __('Updated By') ?></dt>
                         <dd>
-                            <?= $this->Number->format($log->updated_by_id) ?>
+                            <?= $log->has('updated_by') ? $log->updated_by->{$displayField} : '' ?>
                         </dd>
                         <dt><?= __('Deleted') ?></dt>
                         <dd>
@@ -80,24 +80,22 @@
                                 </th>
                             </tr>
 
-
-
-                            <?php foreach ($log->shelf_log_detalhe as $auditoriaLogs) : ?>
+                            <?php foreach ($log->shelf_log_detalhe as $detalhe) : ?>
                             <tr>
                                 <td>
-                                    <?= h($auditoriaLogs->id) ?>
+                                    <?= h($detalhe->id) ?>
                                 </td>
                                 <td>
-                                    <?= h($auditoriaLogs->tipo_acao) ?>
+                                    <?= h($detalhe->tipo_acao) ?>
                                 </td>
                                 <td>
-                                    <?= h($auditoriaLogs->created_by_id) ?>
+                                    <?= $detalhe->has('created_by') ? $detalhe->created_by->{$displayField} : '' ?>
                                 </td>
                                 <td>
-                                    <?= h($auditoriaLogs->dados_antigos) ?>
+                                    <?= h($detalhe->dados_antigos) ?>
                                 </td>
                                 <td>
-                                    <?= h($auditoriaLogs->created) ?>
+                                    <?= h($detalhe->created) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
