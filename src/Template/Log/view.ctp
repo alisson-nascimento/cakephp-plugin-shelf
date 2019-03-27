@@ -29,11 +29,11 @@
                         </dd>
                         <dt><?= __('Created By') ?></dt>
                         <dd>
-                            <?= $this->Number->format($log->created_by) ?>
+                            <?= $this->Number->format($log->created_by_id) ?>
                         </dd>
                         <dt><?= __('Updated By') ?></dt>
                         <dd>
-                            <?= $this->Number->format($log->updated_by) ?>
+                            <?= $this->Number->format($log->updated_by_id) ?>
                         </dd>
                         <dt><?= __('Deleted') ?></dt>
                         <dd>
@@ -91,7 +91,7 @@
                                     <?= h($auditoriaLogs->tipo_acao) ?>
                                 </td>
                                 <td>
-                                    <?= h($auditoriaLogs->created_by) ?>
+                                    <?= h($auditoriaLogs->created_by_id) ?>
                                 </td>
                                 <td>
                                     <?= h($auditoriaLogs->dados_antigos) ?>

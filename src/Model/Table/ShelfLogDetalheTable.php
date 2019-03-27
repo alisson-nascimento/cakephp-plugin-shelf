@@ -46,6 +46,12 @@ class ShelfLogDetalheTable extends Table
             'joinType' => 'INNER',
             'className' => 'Shelf.ShelfLogRegistro'
         ]);
+
+        $this->belongsTo('CreatedBy', [
+            'foreignKey' => 'created_by_id',
+            'joinType' => 'INNER',
+            'className' => Configure::read('Log.userModel')
+        ]);
     }
 
     /**
@@ -67,8 +73,8 @@ class ShelfLogDetalheTable extends Table
             ->notEmpty('tipo_acao');
 
         $validator
-            ->integer('created_by')
-            ->allowEmpty('created_by');
+            ->integer('created_by_id')
+            ->allowEmpty('created_by_id');
 
         $validator
             ->scalar('dados_antigos')

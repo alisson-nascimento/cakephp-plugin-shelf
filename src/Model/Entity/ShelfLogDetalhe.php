@@ -31,8 +31,9 @@ class ShelfLogDetalhe extends Entity
         'shelf_log_registro_id' => true,
         'tipo_acao' => true,
         'created' => true,
-        'created_by' => true,
+        'created_by_id' => true,
         'dados_antigos' => true,
-        'shelf_log_registro' => true
+        'shelf_log_registro' => true,
+        'created_by'=>true
     ];
 }

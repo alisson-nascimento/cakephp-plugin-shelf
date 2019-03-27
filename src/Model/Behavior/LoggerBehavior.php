@@ -74,7 +74,7 @@ class LoggerBehavior extends Behavior
                 $registro->modelo_table = $class;
                 $registro->modelo_pk = $entity->id;
                 $registro->created = date('Y-m-d H:i:s');
-                $registro->created_by = $this->getSessionUser()['id'];
+                $registro->created_by_id = $this->getSessionUser()['id'];
             }
             if ($entity->isNew()) {
                 $log->tipo_acao = 'Insert';
@@ -83,7 +83,7 @@ class LoggerBehavior extends Behavior
                 $log->tipo_acao = 'Update';
             }
 
-            $registro->updated_by = $log->created_by = $this->getSessionUser()['id'];
+            $registro->updated_by_id = $log->created_by_id = $this->getSessionUser()['id'];
             $log->created = date('Y-m-d H:i:s');
 
             if ($registroTable->save($registro)) {

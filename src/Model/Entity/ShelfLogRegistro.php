@@ -33,8 +33,10 @@ class ShelfLogRegistro extends Entity
         'modelo_pk' => true,
         'created' => true,
         'deleted' => true,
-        'created_by' => true,
-        'updated_by' => true,
-        'shelf_log_detalhe' => true
+        'created_by_id' => true,
+        'updated_by_id' => true,
+        'shelf_log_detalhe' => true,
+        'created_by'=>true,
+        'updated_by'=>true,
     ];
 }

@@ -45,6 +45,18 @@ class ShelfLogRegistroTable extends Table
             'foreignKey' => 'shelf_log_registro_id',
             'className' => 'Shelf.ShelfLogDetalhe'
         ]);
+
+        $this->belongsTo('CreatedBy', [
+            'foreignKey' => 'created_by_id',
+            'joinType' => 'INNER',
+            'className' => Configure::read('Log.userModel')
+        ]);
+
+        $this->belongsTo('UpdatedBy', [
+            'foreignKey' => 'updated_by_id',
+            'joinType' => 'INNER',
+            'className' => Configure::read('Log.userModel')
+        ]);
     }
 
     /**
@@ -74,13 +86,13 @@ class ShelfLogRegistroTable extends Table
             ->dateTime('deleted')
             ->allowEmpty('deleted');
 
-        $validator
-            ->integer('created_by')
-            ->allowEmpty('created_by');
+        // $validator
+        //     ->integer('created_by_id')
+        //     ->allowEmpty('created_by_id');
 
-        $validator
-            ->integer('updated_by')
-            ->allowEmpty('updated_by');
+        // $validator
+        //     ->integer('updated_by_id')
+        //     ->allowEmpty('updated_by_id');
 
         return $validator;
     }

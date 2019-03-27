@@ -17,12 +17,12 @@ class Shelf extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ])
-        ->addColumn('created_by', 'integer', [
+        ->addColumn('created_by_id', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => true,
         ])
-        ->addColumn('updated_by', 'integer', [
+        ->addColumn('updated_by_id', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => true,
@@ -60,7 +60,7 @@ class Shelf extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
-            ->addColumn('created_by', 'integer', [
+            ->addColumn('created_by_id', 'integer', [
                 'default' => null,
                 'limit' => 11,
                 'null' => true,

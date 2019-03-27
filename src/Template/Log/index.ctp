@@ -35,8 +35,8 @@
                 <th><?= $this->Paginator->sort('modelo_table') ?></th>
                 <th><?= $this->Paginator->sort('modelo_pk') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('created_by') ?></th>
-                <th><?= $this->Paginator->sort('updated_by') ?></th>
+                <th><?= $this->Paginator->sort('created_by_id') ?></th>
+                <th><?= $this->Paginator->sort('updated_by_id') ?></th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
@@ -47,8 +47,8 @@
                 <td><?= h($log->modelo_table) ?></td>
                 <td><?= $this->Number->format($log->modelo_pk) ?></td>
                 <td><?= h($log->created) ?></td>
-                <td><?= $this->Number->format($log->created_by) ?></td>
-                <td><?= $this->Number->format($log->updated_by) ?></td>
+                <td><?= $this->Number->format($log->created_by_id) ?></td>
+                <td><?= $this->Number->format($log->updated_by_id) ?></td>
                 <td class="actions" style="white-space:nowrap">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $log->id], ['class'=>'btn btn-info btn-xs']) ?>
                 </td>
