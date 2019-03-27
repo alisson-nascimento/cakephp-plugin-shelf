@@ -5,6 +5,7 @@ namespace Shelf\Model\Behavior;
 use Cake\ORM\Behavior;
 use Cake\Event\Event;
 use Cake\ORM\Entity;
+use Cake\Network\Session;
 
 class LoggerBehavior extends Behavior
 {
@@ -12,6 +13,11 @@ class LoggerBehavior extends Behavior
     public function initialize(array $config)
     {
         parent::initialize($config);
+    }
+
+    public function getSessionUser() {
+        $session = new Session();
+        return $session->read('Auth.User');
     }
 
     private function arrayRecursiveDiff($aArray1, $aArray2)
@@ -71,7 +77,7 @@ class LoggerBehavior extends Behavior
 
                 $registro->modelo_table = $class;
                 $registro->created = date('Y-m-d H:i:s');
-                $registro->created_by = $this->request->getSession()->read('Auth.User.id');
+                $registro->created_by = $this->getSessionUser()['id'];
             }
             // pr($registro);exit;
             if ($entity->isNew()) {
@@ -81,7 +87,7 @@ class LoggerBehavior extends Behavior
                 $log->tipo_acao = 'Update';                
             }
 
-            $registro->created_by = $log->updated_by = $this->request->getSession()->read('Auth.User.id');
+            $registro->created_by = $log->updated_by = $this->getSessionUser()['id'];
             $log->created = date('Y-m-d H:i:s');
 
             if ($registroTable->save($registro)) {
