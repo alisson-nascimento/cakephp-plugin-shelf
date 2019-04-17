@@ -3,7 +3,7 @@
 namespace Shelf\Panel;
 
 use Cake\Event\Event;
-use Cake\Http\ServerRequest as Request;
+use Cake\Core\Configure;
 use DebugKit\DebugPanel;
 
 class ConfigurePanel extends DebugPanel
@@ -18,10 +18,6 @@ class ConfigurePanel extends DebugPanel
      */
     public function shutdown(Event $event)
     {
-        /* @var Request $request */
-        $request = $event->getSubject()->request;
-        if ($request) {
-            $this->_data = ['content' => $request->getSession()->read()];
-        }
+        $this->_data = ['content' => Configure::read()];
     }
 }
