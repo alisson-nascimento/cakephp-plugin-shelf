@@ -24,7 +24,6 @@ use Cake\Core\Configure;
  */
 class ShelfLogDetalheTable extends Table
 {
-
     /**
      * Initialize method
      *
