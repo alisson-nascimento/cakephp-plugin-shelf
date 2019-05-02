@@ -2,6 +2,8 @@
 namespace Shelf\Controller;
 
 use Shelf\Controller\AppController;
+use Cake\Database\Expression\QueryExpression;
+use Cake\ORM\Query;
 
 /**
  * Log Controller
@@ -42,6 +44,23 @@ class LogController extends AppController
             'contain' => ['ShelfLogDetalhe'=>['CreatedBy'], 'CreatedBy', 'UpdatedBy']
         ]);
 
+        $this->set('log', $log);
+    }
+
+    
+    public function history($modelo_table,  $modelo_pk)
+    {
+        $this->loadModel('Shelf.ShelfLogRegistro');
+        $log = $this->ShelfLogRegistro
+                    ->find()
+                    ->contain(['ShelfLogDetalhe'=>['CreatedBy'], 'CreatedBy', 'UpdatedBy'])
+                    ->where(function (QueryExpression $exp, Query $q) use ($modelo_table, $modelo_pk){
+                        // pr($modelo_table);exit;
+                        return $exp->like('modelo_table', '%'. $modelo_table)
+                                    ->eq('modelo_pk', $modelo_pk)
+                                    ;
+                    })->first();
+                    
         $this->set('log', $log);
     }
 }
