@@ -3,6 +3,13 @@ namespace Shelf\Lib\Helper;
 
 class Icon extends Common
 {
+    use \Phacil\Common\Traits\InstanceTrait;
+
+    public function __construct()
+    {
+        self::$instance = $this;
+        return $this;
+    }
     /**
      * Tag for icon
      * 
