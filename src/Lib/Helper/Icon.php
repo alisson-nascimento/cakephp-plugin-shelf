@@ -1,7 +1,7 @@
 <?php
 namespace Shelf\Lib\Helper;
 
-class Icon extends Common
+class Icon
 {
     use \Phacil\Common\Traits\InstanceTrait;
 

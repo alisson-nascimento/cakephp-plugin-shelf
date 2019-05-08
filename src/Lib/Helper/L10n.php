@@ -1,7 +1,7 @@
 <?php
 namespace Shelf\Lib\Helper;
 
-class L10n extends Common
+class L10n
 {
     use \Phacil\Common\Traits\InstanceTrait;
 
