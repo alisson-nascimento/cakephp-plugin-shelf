@@ -1,7 +1,7 @@
 <?php
-use Shelf\Lib\Helper\L10n;
-
 namespace shelf{
+
+    use Shelf\Lib\Helper\L10n;
     /**
      * Undocumented function
      *
