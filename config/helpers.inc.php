@@ -14,7 +14,17 @@ namespace shelf{
         return $termo;
     }
 
-    function t($termo){
+    function l10n_binding($bindings){       
+        if(!is_array($bindings)){
+            $bindings = [$bindings];
+        }
+        return array_map("\shelf\l10n",  $bindings);
+    }
+
+    function t($termo, $bindings = null){
+        if($bindings){
+            return \phacil\raw(l10n($termo),l10n_binding($bindings));            
+        }
         return l10n($termo);
     }
 }

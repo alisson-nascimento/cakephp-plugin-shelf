@@ -1,5 +1,5 @@
 <?php
 
-function t($termo){
-    return shelf\l10n($termo);
+function t($termo, $bindings = null){
+    return shelf\t($termo, $bindings);
 }
