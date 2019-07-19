@@ -8,8 +8,8 @@ namespace shelf{
      * @return \Shelf\Lib\Helper\L10n
      */
     function l10n($termo){
-        if(Configure::check('Shelf.L10n'. $termo)){
-            return Configure::read('Shelf.L10n'. $termo);
+        if(Configure::check('Shelf.L10n.'. $termo)){
+            return Configure::read('Shelf.L10n.'. $termo);
         }
         return $termo;
     }
