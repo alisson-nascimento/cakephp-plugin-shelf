@@ -12,7 +12,8 @@
             "Shelf\\": "src/"
         },
         "files": [
-            "config/helpers.inc.php"
+            "config/helpers.inc.php",
+            "config/helper.t.inc.php"
         ]
     },
     "suggest": {

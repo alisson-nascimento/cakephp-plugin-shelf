@@ -1,17 +1,21 @@
 <?php
 namespace shelf{
 
-    use Shelf\Lib\Helper\L10n;
+    use Cake\Core\Configure;
     /**
      * Undocumented function
      *
      * @return \Shelf\Lib\Helper\L10n
      */
-    function l10n(){
-        if(!is_null(L10n::getInstance())){
-            return L10n::getInstance();
+    function l10n($termo){
+        if(Configure::check('Shelf.L10n'. $termo)){
+            return Configure::read('Shelf.L10n'. $termo);
         }
-        return new L10n();
+        return $termo;
+    }
+
+    function t($termo){
+        return l10n($termo);
     }
 }
 
