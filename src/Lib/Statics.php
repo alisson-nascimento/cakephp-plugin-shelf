@@ -4,16 +4,19 @@ namespace Shelf\Lib;
 
 class Statics{
 
-    public static $logCollection = null;
+    public static $l10nLogCollection = null;
 
     /**
     * @return \Phacil\Common\Classes\Collection
     */
-    public static function log($chave, $valor){
-        if(is_null(self::$logCollection)){
-            self::$logCollection = \phacil\collection([]);            
+    public static function l10nLog($chave, $valor){
+        try{
+            if(is_null(self::$l10nLogCollection)){
+                self::$l10nLogCollection = \phacil\collection([]);
+            }
+            self::$l10nLogCollection->add($chave, $valor);
+        }catch(\Exception $e){            
         }
-        self::$logCollection->add($chave, $valor);
-        return self::$logCollection;
+        return self::$l10nLogCollection;
     }
 }

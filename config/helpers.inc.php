@@ -1,15 +1,15 @@
 <?php
 namespace shelf{
 
-    use \Cake\Core\Configure;
+    use Shelf\Lib\L10nConfigure;
      /**
      * Undocumented function
      *
      * @return \Shelf\Lib\Helper\L10n
      */
     function l10n($termo_chave){
-        if(Configure::check('Shelf.L10n.'. $termo_chave)){
-            $termo_traduzido = Configure::read('Shelf.L10n.'. $termo_chave);
+        if(L10nConfigure::check('L10n.'. $termo_chave)){
+            $termo_traduzido = L10nConfigure::read('Shelf.L10n.'. $termo_chave);
         }else{
             $termo_traduzido = $termo_chave;
         }

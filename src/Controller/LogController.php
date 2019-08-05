@@ -55,7 +55,6 @@ class LogController extends AppController
                     ->find()
                     ->contain(['ShelfLogDetalhe'=>['CreatedBy'], 'CreatedBy', 'UpdatedBy'])
                     ->where(function (QueryExpression $exp, Query $q) use ($modelo_table, $modelo_pk){
-                        // pr($modelo_table);exit;
                         return $exp->like('modelo_table', '%'. $modelo_table)
                                     ->eq('modelo_pk', $modelo_pk)
                                     ;

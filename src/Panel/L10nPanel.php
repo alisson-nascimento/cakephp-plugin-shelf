@@ -19,6 +19,6 @@ class L10nPanel extends DebugPanel
      */
     public function shutdown(Event $event)
     {
-        $this->_data = ['content' => Statics::$logCollection];
+        $this->_data = ['content' => Statics::$l10nLogCollection];
     }
 }
