@@ -8,8 +8,8 @@ namespace shelf{
      * @return \Shelf\Lib\Helper\L10n
      */
     function l10n($termo_chave){
-        if(L10nConfigure::check($termo_chave)){
-            $termo_traduzido = L10nConfigure::read($termo_chave);
+        if(L10nConfigure::check('L10n.'. $termo_chave)){
+            $termo_traduzido = L10nConfigure::read('L10n.'. $termo_chave);
         }else{
             $termo_traduzido = $termo_chave;
         }
@@ -17,7 +17,7 @@ namespace shelf{
         return $termo_traduzido;
     }
 
-    function l10n_binding($bindings){       
+    function l10n_binding($bindings){
         if(!is_array($bindings)){
             $bindings = [$bindings];
         }
