@@ -8,13 +8,12 @@ namespace shelf{
      * @return \Shelf\Lib\Helper\L10n
      */
     function l10n($termo_chave){
-        if(L10nConfigure::check('L10n.'. $termo_chave)){
-            $termo_traduzido = L10nConfigure::read('Shelf.L10n.'. $termo_chave);
+        if(L10nConfigure::check($termo_chave)){
+            $termo_traduzido = L10nConfigure::read($termo_chave);
         }else{
             $termo_traduzido = $termo_chave;
         }
-        
-        \Shelf\Lib\Statics::log($termo_chave, $termo_traduzido);
+        \Shelf\Lib\Statics::l10nLog($termo_chave, $termo_traduzido);
         return $termo_traduzido;
     }
 
@@ -27,7 +26,7 @@ namespace shelf{
 
     function t($termo, $bindings = null){
         if($bindings){
-            return \phacil\raw(l10n($termo),l10n_binding($bindings));            
+            return \phacil\raw(l10n($termo),l10n_binding($bindings));
         }
         return l10n($termo);
     }
